@@ -87,7 +87,7 @@ src/
 
 ```typescript
 const eventConfig = {
-  eventName: 'Esra & Mustafa Kürşad Düğünü',
+  eventName: 'Esra & Mustafa',
   eventDate: '19 Eylül 2025',
   coupleNames: ['Ayşe', 'Mehmet'],
   welcomeMessage: 'Özel günümüzün anılarını bizimle paylaşın!',

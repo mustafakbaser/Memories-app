@@ -7,8 +7,6 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const fileId = formData.get('fileId') as string;
-    const uploaderName = formData.get('uploaderName') as string;
-    const uploaderEmail = formData.get('uploaderEmail') as string;
 
     if (!file) {
       return NextResponse.json(
@@ -67,8 +65,6 @@ export async function POST(request: NextRequest) {
       size: file.size,
       type: resourceType,
       uploadedAt: new Date().toISOString(),
-      uploaderName: uploaderName || undefined,
-      uploaderEmail: uploaderEmail || undefined,
     };
 
     // TODO: Save to database

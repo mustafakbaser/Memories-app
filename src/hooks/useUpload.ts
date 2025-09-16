@@ -7,8 +7,7 @@ export function useUpload() {
   const [isUploading, setIsUploading] = useState(false);
 
   const uploadFiles = useCallback(async (
-    files: File[],
-    uploaderInfo?: { name: string; email?: string }
+    files: File[]
   ): Promise<UploadedFile[]> => {
     setIsUploading(true);
     const uploadPromises: Promise<UploadedFile>[] = [];
@@ -30,12 +29,6 @@ export function useUpload() {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('fileId', fileId);
-        if (uploaderInfo?.name) {
-          formData.append('uploaderName', uploaderInfo.name);
-        }
-        if (uploaderInfo?.email) {
-          formData.append('uploaderEmail', uploaderInfo.email);
-        }
 
         const xhr = new XMLHttpRequest();
 
@@ -68,8 +61,6 @@ export function useUpload() {
                 size: file.size,
                 type: getFileType(file),
                 uploadedAt: new Date(),
-                uploaderName: uploaderInfo?.name,
-                uploaderEmail: uploaderInfo?.email,
               });
             } catch (error) {
               setUploads(prev => prev.map(upload => 
