@@ -58,8 +58,8 @@ export default function HomePage() {
           className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-tl from-purple-400/20 to-indigo-400/20 rounded-full blur-3xl"
         />
 
-        {/* Animated Hearts Rain */}
-        {[...Array(6)].map((_, i) => (
+        {/* Animated Hearts Rain - Less on mobile */}
+        {[...Array(typeof window !== 'undefined' && window.innerWidth < 768 ? 3 : 6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-rose-300/20"
@@ -91,16 +91,16 @@ export default function HomePage() {
             initial={{ opacity: 0, y: -100, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -50, scale: 0.8 }}
-            className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-md md:w-auto"
           >
-            <div className="bg-white/95 backdrop-blur-xl px-8 py-4 rounded-full shadow-2xl border border-green-200">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                  <Stars className="h-5 w-5 text-white" />
+            <div className="bg-white/95 backdrop-blur-xl px-4 py-3 md:px-8 md:py-4 rounded-2xl md:rounded-full shadow-2xl border border-green-200">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Stars className="h-4 w-4 md:h-5 md:w-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-gray-800 font-semibold">Harika! Fotoğraflar yüklendi</p>
-                  <p className="text-gray-600 text-sm">Anılarınız güvende</p>
+                  <p className="text-sm md:text-base text-gray-800 font-semibold">Harika! Yüklendi</p>
+                  <p className="text-xs md:text-sm text-gray-600">Anılarınız güvende</p>
                 </div>
               </div>
             </div>
@@ -109,13 +109,13 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* Main Content */}
-      <div className="h-full flex items-center justify-center p-4 relative z-10">
+      <div className="h-full flex items-center justify-center p-3 md:p-4 relative z-10">
         <div className="w-full max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-16 items-center h-full lg:h-auto"
           >
 
             {/* Left Side - Hero Content */}
@@ -123,26 +123,26 @@ export default function HomePage() {
               initial={{ opacity: 0, x: -60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-center lg:text-left space-y-8"
+              className="text-center lg:text-left space-y-4 md:space-y-6 lg:space-y-8"
             >
               {/* Decorative Badge */}
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-rose-100 to-pink-100 rounded-full border border-rose-200"
+                className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-rose-100 to-pink-100 rounded-full border border-rose-200 text-xs md:text-sm"
               >
-                <Sparkles className="h-4 w-4 text-rose-500" />
-                <span className="text-sm font-medium text-rose-700">Özel Gün</span>
+                <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-rose-500" />
+                <span className="font-medium text-rose-700">Özel Gün</span>
               </motion.div>
 
               {/* Title with Gradient */}
-              <div className="space-y-4">
+              <div className="space-y-2 md:space-y-4">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-5xl lg:text-7xl font-bold"
+                  className="text-4xl md:text-5xl lg:text-7xl font-bold"
                 >
                   <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
                     {eventConfig.eventName}
@@ -154,17 +154,17 @@ export default function HomePage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="flex items-center justify-center lg:justify-start gap-3"
+                  className="flex flex-wrap items-center justify-center lg:justify-start gap-2 md:gap-3"
                 >
-                  <div className="flex items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur rounded-full shadow-lg border border-purple-100">
-                    <Calendar className="h-5 w-5 text-purple-500" />
+                  <div className="flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-5 md:py-2.5 bg-white/80 backdrop-blur rounded-full shadow-lg border border-purple-100 text-sm md:text-base">
+                    <Calendar className="h-4 w-4 md:h-5 md:w-5 text-purple-500" />
                     <span className="font-semibold text-gray-800">{eventConfig.eventDate}</span>
                   </div>
                   {uploadedCount > 0 && (
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="px-5 py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full shadow-lg"
+                      className="px-3 py-2 md:px-5 md:py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full shadow-lg text-sm md:text-base"
                     >
                       <span className="font-bold">{uploadedCount}</span> anı
                     </motion.div>
@@ -177,12 +177,12 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="space-y-4"
+                className="space-y-2 md:space-y-4"
               >
-                <h2 className="text-2xl lg:text-3xl font-light text-gray-700 leading-relaxed">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-light text-gray-700 leading-relaxed">
                   {eventConfig.welcomeMessage}
                 </h2>
-                <p className="text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
                   {eventConfig.subtitle}
                 </p>
               </motion.div>
@@ -223,17 +223,17 @@ export default function HomePage() {
               className="w-full"
             >
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: typeof window !== 'undefined' && window.innerWidth > 768 ? 1.02 : 1 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="relative"
               >
                 {/* Card Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 rounded-3xl blur-xl opacity-20 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl md:rounded-3xl blur-xl opacity-20 animate-pulse hidden md:block" />
 
                 {/* Main Card */}
-                <div className="relative bg-white/90 backdrop-blur-2xl rounded-3xl p-8 lg:p-10 shadow-2xl border border-white/60">
+                <div className="relative bg-white/90 backdrop-blur-2xl rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-10 shadow-2xl border border-white/60">
                   {/* Card Header */}
-                  <div className="text-center mb-8">
+                  <div className="text-center mb-5 md:mb-8">
                     <motion.div
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
@@ -244,8 +244,8 @@ export default function HomePage() {
                       }}
                       className="inline-block"
                     >
-                      <div className="w-20 h-20 bg-gradient-to-br from-pink-500 via-rose-500 to-purple-500 rounded-3xl flex items-center justify-center shadow-xl mb-4 mx-auto relative">
-                        <Heart className="h-10 w-10 text-white" />
+                      <div className="w-14 h-14 md:w-20 md:h-20 bg-gradient-to-br from-pink-500 via-rose-500 to-purple-500 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-xl mb-3 md:mb-4 mx-auto relative">
+                        <Heart className="h-7 w-7 md:h-10 md:w-10 text-white" />
                         <motion.div
                           className="absolute inset-0 rounded-3xl bg-white/30"
                           animate={{
@@ -260,10 +260,10 @@ export default function HomePage() {
                       </div>
                     </motion.div>
 
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-1 md:mb-2">
                       Anıları Paylaş
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-sm md:text-base text-gray-600">
                       Özel anlarınızı kolayca yükleyin
                     </p>
                   </div>

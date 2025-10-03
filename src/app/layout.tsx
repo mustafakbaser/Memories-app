@@ -10,25 +10,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Memories App - Düğün Fotoğraf Paylaşımı',
-  description: 'Düğün anılarınızı kolayca paylaşın ve toplayın. Modern, güvenli ve kullanıcı dostu fotoğraf paylaşım platformu.',
+  title: 'Esra & M. Kürşad - Düğün Anıları',
+  description: 'Düğün anılarınızı bizimle paylaşın. 19 Eylül 2025',
   keywords: ['düğün', 'fotoğraf paylaşımı', 'anı toplama', 'event photography'],
   authors: [{ name: 'Memories App' }],
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes',
+  themeColor: '#ec4899',
   openGraph: {
-    title: 'Memories App - Düğün Fotoğraf Paylaşımı',
-    description: 'Düğün anılarınızı kolayca paylaşın ve toplayın.',
+    title: 'Esra & M. Kürşad - Düğün Anıları',
+    description: 'Düğün anılarınızı bizimle paylaşın.',
     type: 'website',
     locale: 'tr_TR',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Memories App - Düğün Fotoğraf Paylaşımı',
-    description: 'Düğün anılarınızı kolayca paylaşın ve toplayın.',
+    title: 'Esra & M. Kürşad - Düğün Anıları',
+    description: 'Düğün anılarınızı bizimle paylaşın.',
   },
   robots: {
     index: true,
     follow: true,
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
